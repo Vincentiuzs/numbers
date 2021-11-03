@@ -5,7 +5,6 @@
 #=====================================================================================
 
 def isPalindrome1( number ):
-
     num     = number                          # Assign value of number to num
     reverse = 0                               # Assign 0 to reverse
     
@@ -21,8 +20,24 @@ def isPalindrome1( number ):
     return (number == reverse)
 
 #=====================================================================================
-#                Method2: For loop
+#                Method2: For loop with arrays
 #=====================================================================================
+
+def isPalindrome2( number ):
+    reverse = 0                               # Assign 0 to reverse
+
+    # Negative integers are mot palindromic
+    if ( number < 0 ):
+        return False
+
+    div_by_base10 = [ number // (1*(10**i)) for i in range(len(str(number))) ]
+    last_digits   = [ i % 10 for i in div_by_base10 ]
+
+    for last_digit in last_digits:
+        reverse = 10 * reverse + last_digit
+
+    return (number == reverse)
+
 
 if __name__ == "__main__":
 
@@ -30,3 +45,7 @@ if __name__ == "__main__":
     
     print("While Loop: {} is a palindrome.".format(number) if isPalindrome1(number) 
             else "While loop: {} is not a palindrome.".format(number))
+
+    print("For Loop (w/ arrays): {} is a palindrome.".format(number) if isPalindrome2(number)
+            else "For loop (w/ arrays): {} is not a palindrome.".format(number))
+
