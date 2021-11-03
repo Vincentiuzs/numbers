@@ -38,14 +38,46 @@ def isPalindrome2( number ):
 
     return (number == reverse)
 
+#=======================================================================================
+#              Method3: recursion, reverse of an integer
+#=======================================================================================
+
+def reverse( number ):
+    return reverseNumber(number, 0)
+
+def reverseNumber(number, reverse):
+    if (number == 0):
+        return reverse
+    return reverseNumber(number // 10, 10 * reverse + number % 10)
+
+def isPalindrome3( number ):
+    return (number == reverse(number) if number > 0 else False)
+
+#=======================================================================================
+#            Method4: string reverse
+#=======================================================================================
+
+def isPalindrome4( number ):
+    number = str(number)
+    return ( number == number[::-1] if int(number) > 0 else False)
+
+#=======================================================================================
+#           Main
+#=======================================================================================
 
 if __name__ == "__main__":
 
     number = int(input("Enter a number: "))
-    
+    print()
+
     print("While Loop: {} is a palindrome.".format(number) if isPalindrome1(number) 
             else "While loop: {} is not a palindrome.".format(number))
-
+    print()
     print("For Loop (w/ arrays): {} is a palindrome.".format(number) if isPalindrome2(number)
             else "For loop (w/ arrays): {} is not a palindrome.".format(number))
-
+    print()
+    print("Recursion (Reverse of a number): {} is a palindrome.".format(number) if isPalindrome3(number)
+            else "Recursion (Reverse of a number): {} is not a palindrome.".format(number))
+    print()
+    print("String reverse: {} is a palindrome.".format(number) if isPalindrome4(number)
+            else "String reverse: {} is not a palindrome.".format(number))
