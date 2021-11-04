@@ -12,5 +12,11 @@ CLASS_FILES = $(CLASSES:%.class=$(BINDIR)/%.class)
 
 default: $(CLASS_FILES)
 
+clean:
+	rm $(BINDIR)/*
+	rmdir $(BINDIR)/
+
 palindrome:
 	java -cp bin Palindrome
+
+
