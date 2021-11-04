@@ -63,7 +63,7 @@ def reverseNumber(number, reverse):
 def isPalindrome3( number ):
     """ Checks if a number is a palindrome. """
     #return false if number < 0, else check if number is same as reverse
-    return (number == reverse(number) if number > 0 else False)
+    return (False if int(number) < 0 else number == reverse(number) )
 
 #=======================================================================================================
 #            Method4: string reverse
@@ -75,7 +75,7 @@ def isPalindrome4( number ):
     number = str(number)
     # number[::-1] is a reversed string of number. return false if
     # number < 0, else check if number is same as reverse
-    return ( number == number[::-1] if int(number) > 0 else False)
+    return ( number == number[::-1] )
 
 #=======================================================================================================
 #           Main
@@ -96,3 +96,4 @@ if __name__ == "__main__":
     print()
     print("String reverse: {} is a palindrome.".format(number) if isPalindrome4(number)
             else "String reverse: {} is not a palindrome.".format(number))
+
