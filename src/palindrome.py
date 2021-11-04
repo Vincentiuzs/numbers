@@ -34,13 +34,11 @@ def isPalindrome2( number ):
         return False
 
     # Remove last digit at every iteration: first element is number
-    div_by_base10 = [ number // (1*(10**i)) for i in range(len(str(number))) ]
-    # Find the last digit of every number in div_by_base10
-    last_digits   = [ i % 10 for i in div_by_base10 ]
-
+    div_by_base10 = [ number // (10**i) for i in range(len(str(number))) ]
+    
     # Add last digit of number to reverse
-    for last_digit in last_digits:
-        reverse = 10 * reverse + last_digit
+    for i in div_by_base10:
+        reverse = 10 * reverse + i % 10
 
     # returns true if number = reverse else false
     return (number == reverse)
